@@ -7,16 +7,23 @@ public class BinarySearch
 		Arrays.sort(ray);
 		int bottom=0;
 		int top=ray.length-1;
-		int middle=0;
+		int middle=(top+bottom)/2;
 
+		while(bottom <= top){ 
 
-		while(ray[middle] < item){
-		
-		middle=(top+bottom)/2;
-			
-		bottom=middle+1;
+			if(ray[middle] == item)return middle;
+
+			while(item>ray[middle]){
+				bottom = middle + 1;
+				middle=(top+bottom)/2;
+			}
+
+			while(item<ray[top]){
+				top = middle - 1;
+				middle=(top+bottom)/2;
+			}
 			
 		}
-		return ray[middle];
+		return middle;
 	}
 }
